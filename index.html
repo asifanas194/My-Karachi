@@ -1,0 +1,659 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Explore Karachi, the vibrant city of Pakistan. Learn about its history, culture, and current highlights with our comprehensive guide.">
+    <meta name="keywords"
+        content="Karachi, Sindh, Pakistan, Governor Sindh, Karachi News, Karachi Highlights, Cultural Activities in Karachi">
+    <meta name="author" content="My Karachi Team">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.example.com/my-karachi">
+    <meta property="og:title" content="Welcome to Karachi - A Vibrant City of Pakistan">
+    <meta property="og:description"
+        content="Discover the beauty, culture, and highlights of Karachi, the economic hub of Pakistan.">
+    <meta property="og:image" content="https://www.governorsindh.com/_next/static/media/slideShow1.6f890b58.jpg">
+    <meta property="og:url" content="https://www.example.com/my-karachi">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <title>My Karachi</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            background-image: url('https://images.unsplash.com/photo-1731351621470-8aebda14d242?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwzfHx8ZW58MHx8fHx8');
+            background-attachment: fixed;
+            position: relative;
+            color: white;
+            background-color: #3c474b;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: -1;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 30px;
+        }
+
+        .logo {
+            height: 60px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+            padding: 10px;
+            border-radius: 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+
+        nav ul li a:hover {
+            color: #c77f14;
+        }
+
+        main {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 50px 30px;
+            align-items: center;
+            justify-content: space-between;
+            flex-grow: 1;
+            padding-bottom: 150px;
+            /* Added gap at the bottom */
+        }
+
+        .content {
+            max-width: 50%;
+            position: relative;
+            padding-top: 90px;
+
+        }
+
+        .content h1 {
+            font-size: 48px;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            animation: slideInFromTop 1s ease-in-out;
+
+        }
+
+        .content span {
+            color: #c77f14;
+            display: inline;
+        }
+
+        @keyframes slideInFromTop {
+            0% {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .content pre {
+            font-size: 16px;
+            line-height: 1.6;
+            white-space: pre-wrap;
+            margin-top: 10px;
+            visibility: hidden;
+            /* Initially hidden */
+            position: relative;
+        }
+
+        .image {
+            max-width: 400px;
+            height: 350px;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+            animation: slideInFromTop 4s ease-in-out;
+        }
+
+
+
+        .section {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 20px;
+            scroll-snap-align: start;
+        }
+
+        #whats-good {
+
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            justify-content: center;
+            text-align: start;
+            
+        }
+
+        #whats-good h1 {
+            font-size: 36px;
+            color: #fcfcfc;
+            margin-top: 800px;
+        }
+
+        #whats-good p {
+            font-size: 18px;
+            color: #c77f14;
+            line-height: 1.6;
+            padding-bottom: 80px;
+        }
+
+        .iframe-section {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding-left: 130px;
+}
+
+.iframe-section  iframe{
+    height: 500px;
+    width: 900px;
+}
+
+        .section-content h1 {
+            padding-bottom: 40px;
+            padding-top: 800px;
+            font-size: 45px;
+        }
+
+        .flex {
+            display: flex;
+            border: 3px solid white;
+            padding: 10px;
+            border-radius: 20px;
+            margin-bottom: 150px;
+        }
+
+        .highlight-image {
+            display: flex;
+        }
+
+        .highlight-image img {
+            height: 500px;
+            width: 700px;
+            padding-right: 20px;
+            border-radius: 80px;
+        }
+
+        .highlight-image h1 {
+
+            padding-top: 50px;
+        }
+
+        .highlight-image h1 p {
+
+            font-size: 20px;
+        }
+
+        .highlight-image h1 span {
+            color: #c77f14;
+        }
+
+        .highlight-image h1 p.governor-karachi {
+            font-size: 15px;
+            font-weight: 100;
+        }
+
+
+        /* Card Section */
+        .cards-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 150px;
+            margin-top: 50px;
+        }
+
+        .card {
+            width: 30%;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .card-content h2 {
+            font-size: 22px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .card-content p {
+            font-size: 16px;
+            color: #555;
+        }
+
+        .newsletter-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 60px;
+  padding-bottom: 160px;
+  background-color: #1e4433;
+  color: #fff8f8;
+  margin-top:350px;
+  border-radius: 20px;
+  margin-bottom: 100px;
+}
+
+.newsletter-content {
+  max-width: 60%;
+}
+
+.newsletter-content h2 {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.newsletter-content p {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.newsletter-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 35%;
+}
+
+.newsletter-form label {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.newsletter-form input {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #000;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.newsletter-form .required-note {
+  font-size: 12px;
+  color: #c2d60a;
+  margin-bottom: 10px;
+}
+
+.newsletter-form button {
+  background-color: #000;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.newsletter-form button:hover {
+  background-color: #444;
+}
+
+
+        /* footer {
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            color: white;
+            background-color: #3c474b;
+            padding: 10px 0;
+            padding-top: 200px;
+        } */
+        /* Footer */
+        .footer-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-start;
+            padding: 30px 50px;
+            background-color: #26272b;
+        }
+
+        .footer-box {
+            flex: 1;
+            margin: 10px;
+            min-width: 200px;
+            color: #fff;
+        }
+
+        .footer-box h6 {
+            font-size: 18px;
+            color: #fff;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #c77f14;
+        }
+
+        .footer-box ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .footer-box ul li {
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .footer-box ul li a {
+            text-decoration: none;
+            color: #fff;
+            transition: color 0.3s;
+        }
+
+        .footer-box ul li a:hover {
+            color: #c77f14;
+        }
+
+        .footer-bottom {
+            background-color: #1c1c1c;
+            text-align: center;
+            padding: 10px;
+            color: white;
+        }
+    
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="#"><img class="logo" src="KARACHI_logo_with_only_the_name-removebg-preview.png" alt="Karachi Logo"></a>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#news">News</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#cards-section">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="content">
+            <h1 id="title">Welcome to <br><span>Karachi</span></h1>
+            <pre id="description">
+Karachi, city and capital of Sindh province, southern Pakistan. 
+It is the country’s largest city and principal seaport 
+and is a major commercial and industrial centre.
+
+The city has been variously called Caranjee, Crochey, Krotchey, 
+Currachee, and Kurrachee, all of which are believed to be variants 
+of the same name. In the 18th century it was known as Kalachi-jo-Goth, 
+meaning “the village of Kalachi”.
+            </pre>
+        </div>
+        <div>
+            <img class="image" src="https://221a.ca/wp-content/uploads/2024/02/PR-image-scaled.jpeg?ver=1.1.23"
+                alt="Karachi View" loading="lazy">
+
+        </div>
+        <!-- Second Section -->
+        <section class="section" id="current-highlights">
+            <div class="section-content">
+                <h1>KARACHI CITY</h1>
+                <div class="flex">
+                    <h2>Current Highlights</h2>
+                    <p>
+                        Explore the latest events, cultural activities, and happenings in Karachi.
+                        The city is brimming with energy, offering a mix of tradition and modernity.
+                    </p>
+                </div>
+                <div class="highlight-image">
+                    <img src="https://www.governorsindh.com/_next/static/media/slideShow1.6f890b58.jpg"
+                        alt="Kamran Tessori - Governor Sindh">
+                    <h1>Kamran Khan <span>Tessori</span>
+                        <p><span>(</span>Governor Sindh of Karachi<span>)</span></p> <br>
+                        <p class="governor-karachi">The Governor's House, officially known as Sindh Governor House, and
+                            also known by its former
+                            names including Government House, Governor-General's House and President's House, is a
+                            palace in Karachi, Sindh, Pakistan. It is the official residence of the governor of Sindh.
+                            The current governor of Sindh is Kamran Tessori.</p>
+                    </h1>
+                </div>
+            </div>
+
+        </section>
+
+
+        <section class="section" id="cards-section">
+            <div class="section-content">
+                <h1>Explore Karachi</h1>
+                <div class="cards-container">
+                    <div class="card">
+                        <img src="https://api.time.com/wp-content/uploads/2023/04/imran-khan-8.jpg" alt="Card Image 1">
+                        <div class="card-content">
+                            <h2>Imran Khan</h2>
+                            <p>Imran Khan is a prominent Pakistani politician, former cricketer, and the founder of the
+                                political party Pakistan Tehreek-e-Insaf (PTI). He served as the 22nd Prime Minister of
+                                Pakistan from 2018 to 2022.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/PrimeMinisterNawazSharif.jpg/220px-PrimeMinisterNawazSharif.jpg"
+                            alt="Card Image 2">
+                        <div class="card-content">
+                            <h2>Nawaz Sharif</h2>
+                            <p>Nawaz Sharif is a prominent Pakistani politician and the leader of the Pakistan Muslim
+                                League-Nawaz (PML-N). He served as the Prime Minister of Pakistan three times and is
+                                known for his focus on economic development.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="https://mofa.gov.pk//storage/photos/1/PM/65e710936dfa9.jpeg" alt="Card Image 3">
+                        <div class="card-content">
+                            <h2>Shehbaz Sharif</h2>
+                            <p>Shehbaz Sharif is a Pakistani politician and the current Prime Minister of Pakistan. He
+                                is the brother of Nawaz Sharif and has previously served as the Chief Minister of
+                                Punjab, focusing on infrastructure and development projects.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="whats-good">
+            <h1>What's Good in KARACHI</h1>
+
+            <p>Karachi is Pakistan's largest city and a vibrant hub of culture, commerce, and history. Known for its
+                bustling markets, beautiful beaches, delicious food, and rich cultural heritage, Karachi is a city that
+                offers something for everyone. From the lively streets of Saddar to the serene views of Clifton, Karachi
+                is a blend of modernity and tradition, making it a city worth exploring.</p>
+                <div class="iframe-section">
+                    <iframe  width="560" height="315" src="https://www.youtube.com/embed/95BNerQZtW4?si=ewEbAbotYF8F-KS-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+
+            </section>
+
+            <section class="newsletter-section" id="news">
+                <div class="newsletter-content">
+                  <h2>NEWSLETTER</h2>
+                  <p>
+                    What's good in KHI? From coverage of the latest attractions in the five boroughs 
+                    to deals on Broadway show tickets, incredible cuisine, and more, our emails will 
+                    make sure you never miss a thing.
+                  </p>
+                </div>
+                <div class="newsletter-form">
+                    <label for="email">*Email</label>
+                    <input type="email" id="email" placeholder="Enter your email" required />
+                    <span class="required-note">* Required Fields</span>
+                    <button type="submit" onclick="sendEmail()">SIGN UP</button>
+                  </div>
+              </section>
+              
+              
+
+    </main>
+   
+     <!-- Site footer -->
+     <footer>
+        <div class="footer-container">
+            <div class="footer-box">
+                <h6>About Karachi</h6>
+                <ul>
+                    <li><a href="">History</a></li>
+                    <li><a href="#">Culture</a></li>
+                    <li><a href="#">Tourism</a></li>
+                    <li><a href="#">Business</a></li>
+                </ul>
+            </div>
+            <div class="footer-box">
+                <h6>Quick Links</h6>
+                <ul>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-box">
+                <h6>Follow Us</h6>
+                <ul>
+                    <li><a href="https://www.facebook.com/Anasasif12345/" target="_blank">Facebook</a></li>
+                    <li><a href="https://www.linkedin.com/in/anas-asif-50137024a/" target="_blank">LinkedIn</a></li>
+                    <li><a href="https://www.instagram.com/sheikh_anas_03/" target="_blank">Instagram</a></li>
+                </ul>
+            </div>
+            <div class="footer-box">
+                <h6>Contact</h6>
+                <ul>
+                    <li>+92 3142458194</a></li>
+                    <li>asifanas194@gmail.com</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 My Karachi. All Rights Reserved.</p>
+        </div>
+    </footer>
+    
+    <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js'></script>
+    <script>
+        emailjs.init('mJWoU95WB9GkMUOMR'); // Apna UserID yahan paste karein
+        
+        function sendEmail() {
+          const emailInput = document.getElementById("email");
+          const email = emailInput.value;
+          const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      
+          if (emailRegex.test(email)) {
+            const templateParams = {
+              to_email: email,
+              message: `Hi, ${email}!`,
+            };
+      
+            emailjs.send('service_qqt1u1d', 'template_qw1o8dh', templateParams)
+              .then((response) => {
+                alert('Email sent successfully!');
+                emailInput.value = "";
+              })
+              .catch((error) => {
+                alert('Failed to send email: ', error);
+                console.error('Error:', error);
+              });
+          } else {
+            alert("Invalid email address!");
+          }
+        }
+      </script>
+
+
+    <script>
+        function typeEffect(element, text) {
+            let index = 0;
+            element.style.visibility = "visible"; // Make it visible
+            element.style.opacity = 0; // Start with opacity 0
+
+            function type() {
+                if (index < text.length) {
+                    element.innerHTML += text.charAt(index);
+                    index++;
+                    setTimeout(type, 20); // Speed of typing
+                }
+            }
+
+            // Gradually fade in
+            let opacity = 0;
+            const fadeIn = setInterval(() => {
+                if (opacity >= 1) {
+                    clearInterval(fadeIn);
+                } else {
+                    opacity += 0.05;
+                    element.style.opacity = opacity;
+                }
+            }, 30);
+
+            type();
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const description = document.getElementById("description");
+            const descriptionText = description.textContent.trim(); // Get text
+            description.textContent = ""; // Clear text for animation
+            typeEffect(description, descriptionText);
+        });
+    </script>
+</body>
+
+</html>
