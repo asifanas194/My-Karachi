@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,640 +17,1136 @@
     <meta property="og:image" content="https://www.governorsindh.com/_next/static/media/slideShow1.6f890b58.jpg">
     <meta property="og:url" content="https://www.example.com/my-karachi">
     <meta name="twitter:card" content="summary_large_image">
+    <meta name="theme-color" content="#0b1013">
 
-    <title>My Karachi</title>
+    <title>My Karachi — A Vibrant City of Pakistan</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
     <style>
-        * {
+        /* ============ DESIGN TOKENS ============ */
+        :root {
+            --bg: #0b1013;
+            --surface: #121b20;
+            --surface-2: #162228;
+            --line: rgba(255, 255, 255, .09);
+            --line-strong: rgba(255, 255, 255, .16);
+            --text: #eaf0f3;
+            --muted: #98acb6;
+            --accent: #e9a13b;
+            --accent-2: #f3c069;
+            --accent-glow: rgba(233, 161, 59, .28);
+            --radius: 18px;
+            --radius-lg: 26px;
+            --shadow: 0 24px 60px -28px rgba(0, 0, 0, .9);
+            --max: 1180px;
+            --ease: cubic-bezier(.22, 1, .36, 1);
+        }
+
+        /* ============ RESET ============ */
+        *,
+        *::before,
+        *::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        html,
-        body {
-            height: 100%;
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 92px;
+            -webkit-text-size-adjust: 100%;
         }
 
         body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            background-image: url('https://images.unsplash.com/photo-1731351621470-8aebda14d242?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwzfHx8ZW58MHx8fHx8');
-            background-attachment: fixed;
-            position: relative;
-            color: white;
-            background-color: #3c474b;
+            font-family: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
 
+        /* Ambient background glows */
         body::before {
             content: "";
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.6);
+            inset: 0;
             z-index: -1;
+            pointer-events: none;
+            background:
+                radial-gradient(55rem 55rem at 85% -15%, rgba(233, 161, 59, .12), transparent 62%),
+                radial-gradient(45rem 45rem at -12% 18%, rgba(56, 142, 180, .12), transparent 62%),
+                radial-gradient(40rem 40rem at 50% 110%, rgba(233, 161, 59, .07), transparent 65%);
         }
 
-        header {
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        :focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 3px;
+            border-radius: 8px;
+        }
+
+        ::selection {
+            background: var(--accent);
+            color: #0b1013;
+        }
+
+        /* ============ LAYOUT ============ */
+        .container {
+            width: 100%;
+            max-width: var(--max);
+            margin-inline: auto;
+            padding-inline: clamp(18px, 4vw, 34px);
+        }
+
+        .section {
+            padding-block: clamp(56px, 8vw, 110px);
+        }
+
+        .section-head {
+            max-width: 660px;
+            margin-bottom: clamp(30px, 4vw, 56px);
+        }
+
+        .eyebrow {
+            display: inline-block;
+            font-size: .74rem;
+            font-weight: 700;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 16px;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-weight: 800;
+            letter-spacing: -.025em;
+            line-height: 1.12;
+        }
+
+        h2 {
+            font-size: clamp(1.75rem, 4vw, 2.75rem);
+        }
+
+        h3 {
+            font-size: clamp(1.25rem, 2.6vw, 1.75rem);
+        }
+
+        p {
+            color: var(--muted);
+        }
+
+        .accent {
+            background: linear-gradient(115deg, var(--accent-2), #d98716);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* ============ BUTTONS ============ */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            padding: 14px 28px;
+            border: 1px solid transparent;
+            border-radius: 999px;
+            font: inherit;
+            font-size: .93rem;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: transform .35s var(--ease), box-shadow .35s var(--ease),
+                background-color .35s var(--ease), border-color .35s var(--ease);
+        }
+
+        .btn-primary {
+            background: linear-gradient(115deg, var(--accent-2), #d98716);
+            color: #10161a;
+            box-shadow: 0 16px 34px -16px var(--accent-glow);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 22px 44px -16px rgba(233, 161, 59, .65);
+        }
+
+        .btn-ghost {
+            background: rgba(255, 255, 255, .05);
+            border-color: var(--line-strong);
+            color: var(--text);
+        }
+
+        .btn-ghost:hover {
+            background: rgba(255, 255, 255, .1);
+            transform: translateY(-3px);
+        }
+
+        .btn:disabled {
+            opacity: .6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* ============ HEADER ============ */
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid transparent;
+            transition: background-color .35s var(--ease), border-color .35s var(--ease),
+                box-shadow .35s var(--ease);
+        }
+
+        .site-header.scrolled {
+            background: rgba(9, 14, 17, .82);
+            -webkit-backdrop-filter: blur(18px);
+            backdrop-filter: blur(18px);
+            border-bottom-color: var(--line);
+            box-shadow: 0 22px 44px -34px #000;
+        }
+
+        .header-inner {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 15px 30px;
+            gap: 18px;
+            min-height: 78px;
         }
 
-        .logo {
-            height: 60px;
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            flex-shrink: 0;
         }
 
-        nav ul {
+        .brand img {
+            height: 46px;
+            width: auto;
+        }
+
+        .brand-fallback {
+            display: none;
+            font-size: 1.02rem;
+            font-weight: 800;
+            letter-spacing: .22em;
+            text-transform: uppercase;
+        }
+
+        .site-nav ul {
             display: flex;
+            align-items: center;
+            gap: 4px;
             list-style: none;
         }
 
-        nav ul li {
-            margin-left: 20px;
-            padding: 10px;
-            border-radius: 15px;
-        }
-
-        nav ul li a {
+        .site-nav a {
+            display: block;
+            padding: 10px 18px;
+            border-radius: 999px;
+            font-size: .9rem;
+            font-weight: 500;
+            color: var(--muted);
             text-decoration: none;
-            color: white;
-            font-size: 14px;
-            transition: color 0.3s;
+            transition: color .3s var(--ease), background-color .3s var(--ease);
         }
 
-
-        nav ul li a:hover {
-            color: #c77f14;
+        .site-nav a:hover,
+        .site-nav a.active {
+            color: var(--text);
+            background: rgba(255, 255, 255, .07);
         }
 
-        main {
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            gap: 5px;
+            width: 46px;
+            height: 46px;
+            padding: 0 12px;
+            background: rgba(255, 255, 255, .06);
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            cursor: pointer;
+        }
+
+        .nav-toggle span {
+            display: block;
+            height: 2px;
+            width: 100%;
+            background: var(--text);
+            border-radius: 2px;
+            transition: transform .35s var(--ease), opacity .25s var(--ease);
+        }
+
+        .nav-toggle.active span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+
+        .nav-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav-toggle.active span:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+
+        /* ============ HERO ============ */
+        .hero {
+            padding-block: clamp(44px, 7vw, 92px) clamp(50px, 8vw, 110px);
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.05fr .95fr;
+            align-items: center;
+            gap: clamp(32px, 5vw, 68px);
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6.5vw, 4.15rem);
+            margin-bottom: 22px;
+        }
+
+        .hero .lead {
+            font-size: clamp(1rem, 1.6vw, 1.08rem);
+            max-width: 54ch;
+        }
+
+        .hero .lead + .lead {
+            margin-top: 14px;
+        }
+
+        .hero-actions {
             display: flex;
             flex-wrap: wrap;
-            padding: 50px 30px;
-            align-items: center;
-            justify-content: space-between;
-            flex-grow: 1;
-            padding-bottom: 150px;
-            /* Added gap at the bottom */
+            gap: 14px;
+            margin-top: 32px;
         }
 
-        .content {
-            max-width: 50%;
-            position: relative;
-            padding-top: 90px;
-
-        }
-
-        .content h1 {
-            font-size: 48px;
-            line-height: 1.2;
-            margin-bottom: 20px;
-            animation: slideInFromTop 1s ease-in-out;
-
-        }
-
-        .content span {
-            color: #c77f14;
-            display: inline;
-        }
-
-        @keyframes slideInFromTop {
-            0% {
-                transform: translateY(-100%);
-                opacity: 0;
-            }
-
-            100% {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        .content pre {
-            font-size: 16px;
-            line-height: 1.6;
-            white-space: pre-wrap;
-            margin-top: 10px;
-            visibility: hidden;
-            /* Initially hidden */
-            position: relative;
-        }
-
-        .image {
-            max-width: 400px;
-            height: 350px;
-            border-radius: 20px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
-            animation: slideInFromTop 4s ease-in-out;
-        }
-
-
-
-        .section {
-            height: 100vh;
+        .hero-stats {
             display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            padding: 20px;
-            scroll-snap-align: start;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 34px;
+            list-style: none;
         }
 
-        #whats-good {
+        .hero-stats li {
+            padding: 8px 16px;
+            font-size: .8rem;
+            font-weight: 600;
+            color: var(--muted);
+            background: rgba(255, 255, 255, .04);
+            border: 1px solid var(--line);
+            border-radius: 999px;
+        }
 
+        .hero-media {
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            border: 1px solid var(--line);
+            box-shadow: var(--shadow);
+        }
+
+        .hero-media img {
+            width: 100%;
+            aspect-ratio: 4 / 3.4;
+            object-fit: cover;
+            transition: transform .9s var(--ease);
+        }
+
+        .hero-media:hover img {
+            transform: scale(1.05);
+        }
+
+        /* ============ SPOTLIGHT ============ */
+        .spotlight {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            background: linear-gradient(160deg, rgba(255, 255, 255, .07), rgba(255, 255, 255, .02));
+            border: 1px solid var(--line);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .spotlight-media img {
+            width: 100%;
+            height: 100%;
+            min-height: 340px;
+            object-fit: cover;
+        }
+
+        .spotlight-body {
             display: flex;
             flex-direction: column;
-            align-items: start;
             justify-content: center;
-            text-align: start;
-            
+            gap: 12px;
+            padding: clamp(26px, 4.5vw, 52px);
         }
 
-        #whats-good h1 {
-            font-size: 36px;
-            color: #fcfcfc;
-            margin-top: 800px;
+        .spotlight-body .role {
+            font-size: .82rem;
+            font-weight: 700;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            color: var(--accent);
         }
 
-        #whats-good p {
-            font-size: 18px;
-            color: #c77f14;
-            line-height: 1.6;
-            padding-bottom: 80px;
-        }
-
-        .iframe-section {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding-left: 130px;
-}
-
-.iframe-section  iframe{
-    height: 500px;
-    width: 900px;
-}
-
-        .section-content h1 {
-            padding-bottom: 40px;
-            padding-top: 800px;
-            font-size: 45px;
-        }
-
-        .flex {
-            display: flex;
-            border: 3px solid white;
-            padding: 10px;
-            border-radius: 20px;
-            margin-bottom: 150px;
-        }
-
-        .highlight-image {
-            display: flex;
-        }
-
-        .highlight-image img {
-            height: 500px;
-            width: 700px;
-            padding-right: 20px;
-            border-radius: 80px;
-        }
-
-        .highlight-image h1 {
-
-            padding-top: 50px;
-        }
-
-        .highlight-image h1 p {
-
-            font-size: 20px;
-        }
-
-        .highlight-image h1 span {
-            color: #c77f14;
-        }
-
-        .highlight-image h1 p.governor-karachi {
-            font-size: 15px;
-            font-weight: 100;
-        }
-
-
-        /* Card Section */
+        /* ============ CARDS ============ */
         .cards-container {
-            display: flex;
-            justify-content: space-between;
-            gap: 150px;
-            margin-top: 50px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(272px, 1fr));
+            gap: clamp(18px, 2.6vw, 30px);
         }
 
         .card {
-            width: 30%;
-            background-color: white;
-            border-radius: 15px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
             overflow: hidden;
-            transition: transform 0.3s ease;
+            transition: transform .45s var(--ease), border-color .45s var(--ease),
+                box-shadow .45s var(--ease);
         }
 
         .card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-9px);
+            border-color: rgba(233, 161, 59, .45);
+            box-shadow: var(--shadow);
         }
 
         .card img {
             width: 100%;
-            height: 400px;
+            height: 268px;
             object-fit: cover;
+            object-position: top center;
+            filter: saturate(.95);
+            transition: transform .6s var(--ease), filter .6s var(--ease);
+        }
+
+        .card:hover img {
+            transform: scale(1.06);
+            filter: saturate(1.08);
         }
 
         .card-content {
-            padding: 20px;
-            text-align: center;
+            padding: 24px;
         }
 
-        .card-content h2 {
-            font-size: 22px;
-            color: #333;
+        .card-content h3 {
             margin-bottom: 10px;
+            color: var(--text);
         }
 
         .card-content p {
-            font-size: 16px;
-            color: #555;
+            font-size: .93rem;
+            line-height: 1.7;
         }
 
-        .newsletter-section {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 60px;
-  padding-bottom: 160px;
-  background-color: #1e4433;
-  color: #fff8f8;
-  margin-top:350px;
-  border-radius: 20px;
-  margin-bottom: 100px;
-}
+        /* ============ VIDEO / WHAT'S GOOD ============ */
+        .split {
+            display: grid;
+            grid-template-columns: .9fr 1.1fr;
+            align-items: center;
+            gap: clamp(30px, 5vw, 60px);
+        }
 
-.newsletter-content {
-  max-width: 60%;
-}
-
-.newsletter-content h2 {
-  font-size: 24px;
-  font-weight: bold;
-}
-
-.newsletter-content p {
-  font-size: 16px;
-  line-height: 1.5;
-}
-
-.newsletter-form {
-  display: flex;
-  flex-direction: column;
-  max-width: 35%;
-}
-
-.newsletter-form label {
-  font-size: 14px;
-  margin-bottom: 5px;
-}
-
-.newsletter-form input {
-  padding: 10px;
-  margin-bottom: 10px;
-  border: 1px solid #000;
-  border-radius: 4px;
-  font-size: 14px;
-}
-
-.newsletter-form .required-note {
-  font-size: 12px;
-  color: #c2d60a;
-  margin-bottom: 10px;
-}
-
-.newsletter-form button {
-  background-color: #000;
-  color: #fff;
-  padding: 10px;
-  border: none;
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: bold;
-}
-
-.newsletter-form button:hover {
-  background-color: #444;
-}
-
-
-        /* footer {
+        .video-wrap {
             position: relative;
-            bottom: 0;
             width: 100%;
-            text-align: center;
-            color: white;
-            background-color: #3c474b;
-            padding: 10px 0;
-            padding-top: 200px;
-        } */
-        /* Footer */
-        .footer-container {
-            display: flex;
-            justify-content: space-around;
-            align-items: flex-start;
-            padding: 30px 50px;
-            background-color: #26272b;
+            aspect-ratio: 16 / 9;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            border: 1px solid var(--line);
+            box-shadow: var(--shadow);
+            background: #000;
         }
 
-        .footer-box {
-            flex: 1;
-            margin: 10px;
-            min-width: 200px;
-            color: #fff;
+        .video-wrap iframe {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* ============ NEWSLETTER ============ */
+        .newsletter {
+            display: grid;
+            grid-template-columns: 1.15fr .85fr;
+            align-items: center;
+            gap: clamp(30px, 5vw, 64px);
+            padding: clamp(28px, 5vw, 60px);
+            border-radius: var(--radius-lg);
+            border: 1px solid rgba(233, 161, 59, .2);
+            background:
+                radial-gradient(30rem 30rem at 100% 0%, rgba(233, 161, 59, .16), transparent 65%),
+                linear-gradient(140deg, #14332a, #0d1f22);
+            box-shadow: var(--shadow);
+        }
+
+        .newsletter h2 {
+            font-size: clamp(1.4rem, 3vw, 1.9rem);
+            margin-bottom: 14px;
+            letter-spacing: .04em;
+        }
+
+        .newsletter p {
+            color: #c4d4d6;
+            font-size: .96rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .newsletter-form label {
+            font-size: .78rem;
+            font-weight: 700;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: var(--accent-2);
+        }
+
+        .newsletter-form input {
+            width: 100%;
+            padding: 15px 18px;
+            font: inherit;
+            font-size: .95rem;
+            color: var(--text);
+            background: rgba(0, 0, 0, .35);
+            border: 1px solid var(--line-strong);
+            border-radius: 14px;
+            transition: border-color .3s var(--ease), box-shadow .3s var(--ease);
+        }
+
+        .newsletter-form input::placeholder {
+            color: #6c8188;
+        }
+
+        .newsletter-form input:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px rgba(233, 161, 59, .16);
+        }
+
+        .required-note {
+            font-size: .72rem;
+            letter-spacing: .06em;
+            color: #8fa5a8;
+        }
+
+        .newsletter-form button {
+            margin-top: 6px;
+            padding: 15px 26px;
+            font: inherit;
+            font-size: .88rem;
+            font-weight: 800;
+            letter-spacing: .12em;
+            color: #10161a;
+            background: linear-gradient(115deg, var(--accent-2), #d98716);
+            border: none;
+            border-radius: 14px;
+            cursor: pointer;
+            transition: transform .3s var(--ease), box-shadow .3s var(--ease), opacity .3s;
+        }
+
+        .newsletter-form button:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 18px 34px -16px rgba(233, 161, 59, .7);
+        }
+
+        /* ============ FOOTER ============ */
+        .site-footer {
+            background: #080c0e;
+            border-top: 1px solid var(--line);
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+            gap: clamp(24px, 4vw, 44px);
+            padding-block: clamp(40px, 6vw, 66px);
         }
 
         .footer-box h6 {
-            font-size: 18px;
-            color: #fff;
-            margin-bottom: 15px;
+            font-size: .8rem;
+            font-weight: 800;
+            letter-spacing: .16em;
             text-transform: uppercase;
-            padding-bottom: 5px;
-            border-bottom: 2px solid #c77f14;
+            color: var(--text);
+            padding-bottom: 12px;
+            margin-bottom: 18px;
+            border-bottom: 1px solid var(--line);
+            position: relative;
+        }
+
+        .footer-box h6::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -1px;
+            width: 42px;
+            height: 2px;
+            background: var(--accent);
+            border-radius: 2px;
         }
 
         .footer-box ul {
             list-style: none;
-            padding-left: 0;
         }
 
-        .footer-box ul li {
-            margin-bottom: 10px;
-            font-size: 14px;
+        .footer-box li {
+            margin-bottom: 11px;
+            font-size: .9rem;
+            color: var(--muted);
         }
 
-        .footer-box ul li a {
+        .footer-box a {
+            color: var(--muted);
             text-decoration: none;
-            color: #fff;
-            transition: color 0.3s;
+            transition: color .3s var(--ease), padding-left .3s var(--ease);
         }
 
-        .footer-box ul li a:hover {
-            color: #c77f14;
+        .footer-box a:hover {
+            color: var(--accent);
+            padding-left: 5px;
         }
 
         .footer-bottom {
-            background-color: #1c1c1c;
+            border-top: 1px solid var(--line);
+            padding-block: 22px;
             text-align: center;
-            padding: 10px;
-            color: white;
+            font-size: .84rem;
+            color: #74878e;
         }
-    
+
+        /* ============ TOAST ============ */
+        .toast {
+            position: fixed;
+            left: 50%;
+            bottom: 26px;
+            z-index: 300;
+            max-width: min(92vw, 420px);
+            padding: 14px 22px;
+            font-size: .9rem;
+            font-weight: 500;
+            text-align: center;
+            color: var(--text);
+            background: #16242a;
+            border: 1px solid var(--line-strong);
+            border-radius: 14px;
+            box-shadow: var(--shadow);
+            transform: translate(-50%, 160%);
+            opacity: 0;
+            transition: transform .45s var(--ease), opacity .45s var(--ease);
+        }
+
+        .toast.show {
+            transform: translate(-50%, 0);
+            opacity: 1;
+        }
+
+        .toast.error {
+            border-color: rgba(255, 107, 107, .5);
+        }
+
+        /* ============ SCROLL REVEAL ============ */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity .85s var(--ease), transform .85s var(--ease);
+            transition-delay: var(--d, 0s);
+        }
+
+        .reveal.is-visible {
+            opacity: 1;
+            transform: none;
+        }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 960px) {
+            .hero-grid,
+            .split {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-media {
+                order: -1;
+            }
+
+            .spotlight {
+                grid-template-columns: 1fr;
+            }
+
+            .spotlight-media img {
+                min-height: 0;
+                aspect-ratio: 16 / 10;
+            }
+
+            .newsletter {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 860px) {
+            html {
+                scroll-padding-top: 84px;
+            }
+
+            .nav-toggle {
+                display: flex;
+            }
+
+            .site-nav {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(9, 14, 17, .97);
+                -webkit-backdrop-filter: blur(20px);
+                backdrop-filter: blur(20px);
+                border-bottom: 1px solid var(--line);
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height .45s var(--ease);
+            }
+
+            .site-nav.open {
+                max-height: 340px;
+            }
+
+            .site-nav ul {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 4px;
+                padding: 14px clamp(18px, 4vw, 34px) 24px;
+            }
+
+            .site-nav a {
+                padding: 14px 18px;
+                border-radius: 14px;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .hero-actions .btn {
+                flex: 1 1 100%;
+            }
+
+            .card img {
+                height: 240px;
+            }
+
+            .brand img {
+                height: 38px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: .001ms !important;
+                transition-duration: .001ms !important;
+            }
+
+            .reveal {
+                opacity: 1;
+                transform: none;
+            }
+        }
     </style>
 </head>
 
 <body>
-    <header>
-        <a href="#"><img class="logo" src="KARACHI_logo_with_only_the_name-removebg-preview.png" alt="Karachi Logo"></a>
-        <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#news">News</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="#cards-section">About</a></li>
-            </ul>
-        </nav>
+
+    <!-- ================= HEADER ================= -->
+    <header class="site-header" id="siteHeader">
+        <div class="container header-inner">
+            <a href="#home" class="brand" aria-label="Karachi Home">
+                <img src="KARACHI_logo_with_only_the_name-removebg-preview.png" alt="Karachi Logo"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';">
+                <span class="brand-fallback">Karachi</span>
+            </a>
+
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false"
+                aria-controls="siteNav">
+                <span></span><span></span><span></span>
+            </button>
+
+            <nav class="site-nav" id="siteNav">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#current-highlights">Highlights</a></li>
+                    <li><a href="#cards-section">About</a></li>
+                    <li><a href="#news">News</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
     <main>
-        <div class="content">
-            <h1 id="title">Welcome to <br><span>Karachi</span></h1>
-            <pre id="description">
-Karachi, city and capital of Sindh province, southern Pakistan. 
-It is the country’s largest city and principal seaport 
-and is a major commercial and industrial centre.
 
-The city has been variously called Caranjee, Crochey, Krotchey, 
-Currachee, and Kurrachee, all of which are believed to be variants 
-of the same name. In the 18th century it was known as Kalachi-jo-Goth, 
-meaning “the village of Kalachi”.
-            </pre>
-        </div>
-        <div>
-            <img class="image" src="https://221a.ca/wp-content/uploads/2024/02/PR-image-scaled.jpeg?ver=1.1.23"
-                alt="Karachi View" loading="lazy">
+        <!-- ================= HERO ================= -->
+        <section class="hero" id="home">
+            <div class="container hero-grid">
+                <div class="hero-copy reveal">
+                    <span class="eyebrow">Sindh &bull; Pakistan</span>
+                    <h1>Welcome to <span class="accent">Karachi</span></h1>
 
-        </div>
-        <!-- Second Section -->
-        <section class="section" id="current-highlights">
-            <div class="section-content">
-                <h1>KARACHI CITY</h1>
-                <div class="flex">
-                    <h2>Current Highlights</h2>
-                    <p>
-                        Explore the latest events, cultural activities, and happenings in Karachi.
-                        The city is brimming with energy, offering a mix of tradition and modernity.
+                    <p class="lead">
+                        Karachi, city and capital of Sindh province, southern Pakistan. It is the country’s largest
+                        city and principal seaport — and a major commercial and industrial centre.
                     </p>
+                    <p class="lead">
+                        The city has been variously called Caranjee, Crochey, Krotchey, Currachee, and Kurrachee, all of
+                        which are believed to be variants of the same name. In the 18th century it was known as
+                        <em>Kalachi-jo-Goth</em>, meaning “the village of Kalachi”.
+                    </p>
+
+                    <div class="hero-actions">
+                        <a href="#current-highlights" class="btn btn-primary">Explore the city</a>
+                        <a href="#news" class="btn btn-ghost">Get updates</a>
+                    </div>
+
+                    <ul class="hero-stats">
+                        <li>Largest city in Pakistan</li>
+                        <li>Capital of Sindh</li>
+                        <li>Principal seaport</li>
+                    </ul>
                 </div>
-                <div class="highlight-image">
-                    <img src="https://www.governorsindh.com/_next/static/media/slideShow1.6f890b58.jpg"
-                        alt="Kamran Tessori - Governor Sindh">
-                    <h1>Kamran Khan <span>Tessori</span>
-                        <p><span>(</span>Governor Sindh of Karachi<span>)</span></p> <br>
-                        <p class="governor-karachi">The Governor's House, officially known as Sindh Governor House, and
-                            also known by its former
-                            names including Government House, Governor-General's House and President's House, is a
-                            palace in Karachi, Sindh, Pakistan. It is the official residence of the governor of Sindh.
-                            The current governor of Sindh is Kamran Tessori.</p>
-                    </h1>
+
+                <div class="hero-media reveal" style="--d:.12s">
+                    <img src="https://221a.ca/wp-content/uploads/2024/02/PR-image-scaled.jpeg?ver=1.1.23"
+                        alt="Karachi city view" loading="lazy">
                 </div>
             </div>
-
         </section>
 
+        <!-- ================= CURRENT HIGHLIGHTS ================= -->
+        <section class="section" id="current-highlights">
+            <div class="container">
+                <div class="section-head reveal">
+                    <span class="eyebrow">Karachi City</span>
+                    <h2>Current Highlights</h2>
+                    <p style="margin-top:14px;">
+                        Explore the latest events, cultural activities, and happenings in Karachi. The city is brimming
+                        with energy, offering a mix of tradition and modernity.
+                    </p>
+                </div>
 
+                <div class="spotlight reveal">
+                    <div class="spotlight-media">
+                        <img src="https://www.governorsindh.com/_next/static/media/slideShow1.6f890b58.jpg"
+                            alt="Kamran Khan Tessori — Governor Sindh" loading="lazy">
+                    </div>
+                    <div class="spotlight-body">
+                        <p class="role">Governor Sindh of Karachi</p>
+                        <h3>Kamran Khan <span class="accent">Tessori</span></h3>
+                        <p>
+                            The Governor's House, officially known as Sindh Governor House, and also known by its
+                            former names including Government House, Governor-General's House and President's House,
+                            is a palace in Karachi, Sindh, Pakistan. It is the official residence of the governor of
+                            Sindh. The current governor of Sindh is Kamran Tessori.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= CARDS ================= -->
         <section class="section" id="cards-section">
-            <div class="section-content">
-                <h1>Explore Karachi</h1>
-                <div class="cards-container">
-                    <div class="card">
-                        <img src="https://api.time.com/wp-content/uploads/2023/04/imran-khan-8.jpg" alt="Card Image 1">
+            <div class="container">
+                <div class="section-head reveal">
+                    <span class="eyebrow">Explore Karachi</span>
+                    <h2>Faces of the Nation</h2>
+                </div>
+
+                <div class="cards-container" data-stagger>
+                    <article class="card">
+                        <img src="https://api.time.com/wp-content/uploads/2023/04/imran-khan-8.jpg"
+                            alt="Imran Khan" loading="lazy">
                         <div class="card-content">
-                            <h2>Imran Khan</h2>
+                            <h3>Imran Khan</h3>
                             <p>Imran Khan is a prominent Pakistani politician, former cricketer, and the founder of the
                                 political party Pakistan Tehreek-e-Insaf (PTI). He served as the 22nd Prime Minister of
                                 Pakistan from 2018 to 2022.</p>
                         </div>
-                    </div>
-                    <div class="card">
+                    </article>
+
+                    <article class="card">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/PrimeMinisterNawazSharif.jpg/220px-PrimeMinisterNawazSharif.jpg"
-                            alt="Card Image 2">
+                            alt="Nawaz Sharif" loading="lazy">
                         <div class="card-content">
-                            <h2>Nawaz Sharif</h2>
+                            <h3>Nawaz Sharif</h3>
                             <p>Nawaz Sharif is a prominent Pakistani politician and the leader of the Pakistan Muslim
                                 League-Nawaz (PML-N). He served as the Prime Minister of Pakistan three times and is
                                 known for his focus on economic development.</p>
                         </div>
-                    </div>
-                    <div class="card">
-                        <img src="https://mofa.gov.pk//storage/photos/1/PM/65e710936dfa9.jpeg" alt="Card Image 3">
+                    </article>
+
+                    <article class="card">
+                        <img src="https://mofa.gov.pk//storage/photos/1/PM/65e710936dfa9.jpeg" alt="Shehbaz Sharif"
+                            loading="lazy">
                         <div class="card-content">
-                            <h2>Shehbaz Sharif</h2>
+                            <h3>Shehbaz Sharif</h3>
                             <p>Shehbaz Sharif is a Pakistani politician and the current Prime Minister of Pakistan. He
                                 is the brother of Nawaz Sharif and has previously served as the Chief Minister of
                                 Punjab, focusing on infrastructure and development projects.</p>
                         </div>
-                    </div>
+                    </article>
                 </div>
             </div>
         </section>
 
+        <!-- ================= WHAT'S GOOD ================= -->
         <section class="section" id="whats-good">
-            <h1>What's Good in KARACHI</h1>
-
-            <p>Karachi is Pakistan's largest city and a vibrant hub of culture, commerce, and history. Known for its
-                bustling markets, beautiful beaches, delicious food, and rich cultural heritage, Karachi is a city that
-                offers something for everyone. From the lively streets of Saddar to the serene views of Clifton, Karachi
-                is a blend of modernity and tradition, making it a city worth exploring.</p>
-                <div class="iframe-section">
-                    <iframe  width="560" height="315" src="https://www.youtube.com/embed/95BNerQZtW4?si=ewEbAbotYF8F-KS-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <div class="container split">
+                <div class="reveal">
+                    <span class="eyebrow">City Life</span>
+                    <h2>What’s Good in <span class="accent">Karachi</span></h2>
+                    <p style="margin-top:16px;">
+                        Karachi is Pakistan's largest city and a vibrant hub of culture, commerce, and history. Known
+                        for its bustling markets, beautiful beaches, delicious food, and rich cultural heritage,
+                        Karachi is a city that offers something for everyone. From the lively streets of Saddar to the
+                        serene views of Clifton, Karachi is a blend of modernity and tradition — a city worth
+                        exploring.
+                    </p>
                 </div>
 
-            </section>
-
-            <section class="newsletter-section" id="news">
-                <div class="newsletter-content">
-                  <h2>NEWSLETTER</h2>
-                  <p>
-                    What's good in KHI? From coverage of the latest attractions in the five boroughs 
-                    to deals on Broadway show tickets, incredible cuisine, and more, our emails will 
-                    make sure you never miss a thing.
-                  </p>
+                <div class="video-wrap reveal" style="--d:.1s">
+                    <iframe src="https://www.youtube.com/embed/95BNerQZtW4?si=ewEbAbotYF8F-KS-"
+                        title="Karachi city highlights video" loading="lazy"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 </div>
-                <div class="newsletter-form">
-                    <label for="email">*Email</label>
-                    <input type="email" id="email" placeholder="Enter your email" required />
-                    <span class="required-note">* Required Fields</span>
-                    <button type="submit" onclick="sendEmail()">SIGN UP</button>
-                  </div>
-              </section>
-              
-              
+            </div>
+        </section>
+
+        <!-- ================= NEWSLETTER ================= -->
+        <section class="section" id="news">
+            <div class="container">
+                <div class="newsletter reveal">
+                    <div class="newsletter-content">
+                        <span class="eyebrow" style="color:var(--accent-2)">Newsletter</span>
+                        <h2>What’s good in KHI?</h2>
+                        <p>
+                            From coverage of the latest attractions in the five boroughs to deals on Broadway show
+                            tickets, incredible cuisine, and more — our emails will make sure you never miss a thing.
+                        </p>
+                    </div>
+
+                    <form class="newsletter-form" id="newsletterForm" novalidate>
+                        <label for="email">*Email</label>
+                        <input type="email" id="email" name="email" placeholder="Enter your email" autocomplete="email"
+                            required>
+                        <span class="required-note">* Required Fields</span>
+                        <button type="submit">SIGN UP</button>
+                    </form>
+                </div>
+            </div>
+        </section>
 
     </main>
-   
-     <!-- Site footer -->
-     <footer>
-        <div class="footer-container">
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="site-footer" id="contact">
+        <div class="container footer-container">
             <div class="footer-box">
                 <h6>About Karachi</h6>
                 <ul>
-                    <li><a href="">History</a></li>
+                    <li><a href="#">History</a></li>
                     <li><a href="#">Culture</a></li>
                     <li><a href="#">Tourism</a></li>
                     <li><a href="#">Business</a></li>
                 </ul>
             </div>
+
             <div class="footer-box">
                 <h6>Quick Links</h6>
                 <ul>
-                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
                     <li><a href="#">Terms of Service</a></li>
                     <li><a href="#">Privacy Policy</a></li>
                 </ul>
             </div>
+
             <div class="footer-box">
                 <h6>Follow Us</h6>
                 <ul>
-                    <li><a href="https://www.facebook.com/Anasasif12345/" target="_blank">Facebook</a></li>
-                    <li><a href="https://www.linkedin.com/in/anas-asif-50137024a/" target="_blank">LinkedIn</a></li>
-                    <li><a href="https://www.instagram.com/sheikh_anas_03/" target="_blank">Instagram</a></li>
+                    <li><a href="https://www.facebook.com/Anasasif12345/" target="_blank"
+                            rel="noopener noreferrer">Facebook</a></li>
+                    <li><a href="https://www.linkedin.com/in/anas-asif-50137024a/" target="_blank"
+                            rel="noopener noreferrer">LinkedIn</a></li>
+                    <li><a href="https://www.instagram.com/sheikh_anas_03/" target="_blank"
+                            rel="noopener noreferrer">Instagram</a></li>
                 </ul>
             </div>
+
             <div class="footer-box">
                 <h6>Contact</h6>
                 <ul>
-                    <li>+92 3142458194</a></li>
-                    <li>asifanas194@gmail.com</a></li>
+                    <li><a href="tel:+923142458194">+92 314 2458194</a></li>
+                    <li><a href="mailto:asifanas194@gmail.com">asifanas194@gmail.com</a></li>
                 </ul>
             </div>
         </div>
+
         <div class="footer-bottom">
             <p>&copy; 2024 My Karachi. All Rights Reserved.</p>
         </div>
     </footer>
-    
-    <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js'></script>
+
+    <!-- ================= TOAST ================= -->
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <!-- ================= SCRIPTS ================= -->
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
     <script>
-        emailjs.init('mJWoU95WB9GkMUOMR'); // Apna UserID yahan paste karein
-        
-        function sendEmail() {
-          const emailInput = document.getElementById("email");
-          const email = emailInput.value;
-          const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-      
-          if (emailRegex.test(email)) {
-            const templateParams = {
-              to_email: email,
-              message: `Hi, ${email}!`,
-            };
-      
-            emailjs.send('service_qqt1u1d', 'template_qw1o8dh', templateParams)
-              .then((response) => {
-                alert('Email sent successfully!');
-                emailInput.value = "";
-              })
-              .catch((error) => {
-                alert('Failed to send email: ', error);
-                console.error('Error:', error);
-              });
-          } else {
-            alert("Invalid email address!");
-          }
+        /* ---------- 1. Sticky header state ---------- */
+        const header = document.getElementById('siteHeader');
+        const setHeaderState = () => header.classList.toggle('scrolled', window.scrollY > 8);
+        setHeaderState();
+        window.addEventListener('scroll', setHeaderState, { passive: true });
+
+        /* ---------- 2. Mobile navigation ---------- */
+        const navToggle = document.getElementById('navToggle');
+        const siteNav = document.getElementById('siteNav');
+
+        const closeNav = () => {
+            siteNav.classList.remove('open');
+            navToggle.classList.remove('active');
+            navToggle.setAttribute('aria-expanded', 'false');
+        };
+
+        navToggle.addEventListener('click', () => {
+            const isOpen = siteNav.classList.toggle('open');
+            navToggle.classList.toggle('active', isOpen);
+            navToggle.setAttribute('aria-expanded', String(isOpen));
+        });
+
+        siteNav.querySelectorAll('a').forEach(link => link.addEventListener('click', closeNav));
+
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') closeNav();
+        });
+
+        /* ---------- 3. Scroll reveal ---------- */
+        // Auto-stagger children of [data-stagger]
+        document.querySelectorAll('[data-stagger]').forEach(group => {
+            Array.from(group.children).forEach((child, i) => {
+                child.classList.add('reveal');
+                child.style.setProperty('--d', (i * 0.09).toFixed(2) + 's');
+            });
+        });
+
+        const revealEls = document.querySelectorAll('.reveal');
+
+        if ('IntersectionObserver' in window) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+
+            revealEls.forEach(el => observer.observe(el));
+        } else {
+            revealEls.forEach(el => el.classList.add('is-visible'));
         }
-      </script>
 
+        /* ---------- 4. Toast helper ---------- */
+        const toastEl = document.getElementById('toast');
+        let toastTimer;
 
-    <script>
-        function typeEffect(element, text) {
-            let index = 0;
-            element.style.visibility = "visible"; // Make it visible
-            element.style.opacity = 0; // Start with opacity 0
+        function showToast(message, type = 'success') {
+            toastEl.textContent = message;
+            toastEl.classList.toggle('error', type === 'error');
+            toastEl.classList.add('show');
+            clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => toastEl.classList.remove('show'), 3800);
+        }
 
-            function type() {
-                if (index < text.length) {
-                    element.innerHTML += text.charAt(index);
-                    index++;
-                    setTimeout(type, 20); // Speed of typing
-                }
+        /* ---------- 5. Newsletter (EmailJS) ---------- */
+        if (window.emailjs) {
+            emailjs.init('mJWoU95WB9GkMUOMR'); // Apna User ID yahan rakhein
+        }
+
+        const newsletterForm = document.getElementById('newsletterForm');
+
+        newsletterForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const emailInput = document.getElementById('email');
+            const email = emailInput.value.trim();
+            const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+            if (!emailRegex.test(email)) {
+                showToast('Please enter a valid email address.', 'error');
+                emailInput.focus();
+                return;
             }
 
-            // Gradually fade in
-            let opacity = 0;
-            const fadeIn = setInterval(() => {
-                if (opacity >= 1) {
-                    clearInterval(fadeIn);
-                } else {
-                    opacity += 0.05;
-                    element.style.opacity = opacity;
-                }
-            }, 30);
+            if (!window.emailjs) {
+                showToast('Email service is unavailable right now. Please try later.', 'error');
+                return;
+            }
 
-            type();
-        }
+            const submitBtn = newsletterForm.querySelector('button[type="submit"]');
+            const originalLabel = submitBtn.textContent;
 
-        document.addEventListener("DOMContentLoaded", () => {
-            const description = document.getElementById("description");
-            const descriptionText = description.textContent.trim(); // Get text
-            description.textContent = ""; // Clear text for animation
-            typeEffect(description, descriptionText);
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'SENDING…';
+
+            try {
+                await emailjs.send('service_qqt1u1d', 'template_qw1o8dh', {
+                    to_email: email,
+                    message: `Hi, ${email}!`
+                });
+                showToast('Subscribed successfully — check your inbox!');
+                newsletterForm.reset();
+            } catch (error) {
+                console.error('EmailJS error:', error);
+                showToast('Something went wrong. Please try again.', 'error');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalLabel;
+            }
         });
     </script>
 </body>
